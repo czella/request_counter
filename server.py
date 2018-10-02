@@ -6,20 +6,20 @@ app = Flask(__name__)
 def read_txt(file_name):
     with open(file_name, 'r') as f:
         lines = f.readlines()
-        lines = [element.rstrip().split(',') for element in lines]
+        lines = [element.rstrip().split(':') for element in lines]
         print(lines)
     return dict(lines)
 
 def write_txt(file_name, requests):
     with open(file_name, 'w') as f:
         for key, value in requests.items():
-            f.write('{0},{1}\n'.format(key, value))
+            f.write('{0}:{1}\n'.format(key, value))
     return
 
 @app.route('/')
 def index():
     counts = read_txt('request_counts.txt')
-    return 'Hello counter is {}'.format(counts)
+    return render_template('index.html', counts=counts)
 
 
 @app.route('/request-counter', methods=['GET', 'POST', 'PUT', 'DELETE'])

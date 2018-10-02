@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOJO</title>
+</head>
+<body>
+    <a href="http://0.0.0.0:8000/request-counter">GET request</a>
+    <form action="/request-counter" method="POST">
+        <button name="POST request" value="post">POST request</button>
+    </form>
+    <p>Your count is {{ counts }}</p>
+</body>
+</html>
